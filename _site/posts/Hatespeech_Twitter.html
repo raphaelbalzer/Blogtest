@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Raphael Balzer">
+<meta name="dcterms.date" content="2023-11-25">
+
+<title>testblog - Hate Speech auf Twitter</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">testblog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Hate Speech auf Twitter</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Textanalyse</div>
+    <div class="quarto-category">Klassifikation</div>
+    <div class="quarto-category">Huggingface</div>
+    <div class="quarto-category">tidymodels</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Raphael Balzer </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 25, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="klassifikation-von-hate-speech" class="level1">
+<h1>Klassifikation von Hate Speech</h1>
+<section id="einleitung" class="level2">
+<h2 class="anchored" data-anchor-id="einleitung">Einleitung</h2>
+<p>Ziel dieses Posts ist es, Hate Speech auf Twitter zu klassifizieren. Hass im Internet ist nach wie vor ein großes gesellschaftliches Problem, weshalb es sich lohnt, genauer zu untersuchen, was diesen Hass ausmacht und wie man ihn zuverlässig und automatisiert erkennen kann. Hierfür liegt ein Datensatz vor, der eine Auswahl englischer als Hate Speech oder nicht Hate Speech markierter Tweets enthält. Die Analyse dieser Daten lässt sich in zwei Teile gliedern: Zunächst werden Methoden der explorativen Datenanalyse angewandt, um Muster und Auffälligkeiten in den Tweets zu identifizieren. Anschließend werden die gewonnenen Erkenntnisse genutzt, um sowohl Shallow-Learning- als auch Deep-Learning-Algorithmen darauf zu trainieren, Tweets korrekterweise als Hate Speech einzuordnen.</p>
+</section>
+<section id="vorbereitung" class="level2">
+<h2 class="anchored" data-anchor-id="vorbereitung">Vorbereitung</h2>
+<section id="pakte-laden" class="level3">
+<h3 class="anchored" data-anchor-id="pakte-laden">Pakte laden</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(textrecipes)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tokenizers)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(syuzhet)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(textdata)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(topicmodels)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vip)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="datenimport" class="level3">
+<h3 class="anchored" data-anchor-id="datenimport">Datenimport</h3>
+<p>Bei den Daten handelt es sich um eine Auswahl englischer Tweets, die bereits auf Hate Speech untersucht wurden und sich daher gut für das Training von Modellen zur Erkennung von Hassrede eignen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>d_hate <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"d_hate.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="explorative-datenanalyse" class="level2">
+<h2 class="anchored" data-anchor-id="explorative-datenanalyse">Explorative Datenanalyse</h2>
+<p>Ziel ist es, auf Grundlage der Tweets einige nützliche Features zu generieren, die sich als Prädiktor für die AV (Hatespeech oder nicht) eignen. Hierfür müssen zunächst einige Charakteristika von Tweets, die als Hate Speech gelten, herausgearbeitet werden. Die Methoden und der Code orientieren sich stark an dem Vorgehen, das in Julia Silges und David Robinsons Buch “Text Mining with R” (https://www.tidytextmining.com/) beschrieben wird. Für die nachfolgenden Visualisierungen wird eine mit Hilfe der Seite https://davidmathlogic.com/colorblind eigens erstellte Farbpalette verwendet, die gewährleistet, dass keine Art der Farbenblindheit die Lesbarkeit der Diagramme beeinträchtigt.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Uriah_Flint <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#8175AA"</span>, <span class="st">"#6FB899"</span>, <span class="st">"#3AA2C3"</span>, <span class="st">"#8BD4F9"</span>, <span class="st">"#DDCC77"</span>, <span class="st">"#CC6677"</span>, <span class="st">"#882255"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="vorverarbeitung" class="level3">
+<h3 class="anchored" data-anchor-id="vorverarbeitung">Vorverarbeitung</h3>
+<p>Um eine sinnvolle Analyse durchzuführen, müssen noch einige Datenvorverarbeitungsschritte durchlaufen werden. Diese beinhalten die Tokenisierung, das Entfernen von Stopwords und das Bereinigen der Tweets, die Links oder ähnliche Elemente enthalten.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>d_hate_clean <span class="ot">&lt;-</span> d_hate <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tweet =</span> <span class="fu">str_remove_all</span>(tweet, <span class="at">pattern =</span> <span class="st">'RT</span><span class="sc">\\</span><span class="st">s*|http[s]?://</span><span class="sc">\\</span><span class="st">S+|</span><span class="sc">\\</span><span class="st">d+'</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>train_test_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(d_hate_clean, <span class="at">prop =</span> .<span class="dv">8</span>, <span class="at">strata =</span> class)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>d_train <span class="ot">&lt;-</span> <span class="fu">training</span>(train_test_split)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>d_test <span class="ot">&lt;-</span> <span class="fu">testing</span>(train_test_split)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="tokenisierung" class="level4">
+<h4 class="anchored" data-anchor-id="tokenisierung">Tokenisierung</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tweets_token <span class="ot">&lt;-</span> d_train <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, tweet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="entfernung-der-stopwords" class="level4">
+<h4 class="anchored" data-anchor-id="entfernung-der-stopwords">Entfernung der Stopwords</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(stopwords_en, <span class="at">package =</span> <span class="st">"lsa"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>stopwords_en <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">word =</span> stopwords_en)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>tweets_token <span class="ot">&lt;-</span> tweets_token <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(stopwords_en)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(word)`</code></pre>
+</div>
+</div>
+</section>
+<section id="sentimentwerte" class="level4">
+<h4 class="anchored" data-anchor-id="sentimentwerte">Sentimentwerte</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>senti <span class="ot">&lt;-</span> <span class="fu">get_sentiments</span>(<span class="st">"afinn"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">neg_pos =</span> <span class="fu">case_when</span>(value <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"pos"</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                             <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"neg"</span>))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>tweets_senti <span class="ot">&lt;-</span> tweets_token <span class="sc">%&gt;%</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">inner_join</span>(senti)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(word)`</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="anteil-von-hate-speech" class="level3">
+<h3 class="anchored" data-anchor-id="anteil-von-hate-speech">Anteil von Hate Speech</h3>
+<p>Um sich einen ersten Überblick über die Daten zu verschaffen, ist es sinnvoll, zunächst einmal den Anteil der als Hate Speech markierten Tweets zu überprüfen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tweets_token <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="st">`</span><span class="at">Anteil Hate Speech</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(class <span class="sc">==</span> <span class="st">"hate speech"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  `Anteil Hate Speech`
+                 &lt;dbl&gt;
+1                 0.25</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>class_totals <span class="ot">&lt;-</span> tweets_token <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(class, <span class="at">name =</span> <span class="st">"class_total"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(class_totals, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> class_total, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Anteil an Hate Speech"</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Klasse"</span>) <span class="sc">+</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> class_total), <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> Uriah_Flint)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Hatespeech_Twitter_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Der Anteil der Hate Speech in diesem Datensatz beträgt 25 Prozent. Die Tweets anderer Kategorien sind also deutlich in der Mehrheit.</p>
+</section>
+<section id="worthäufigkeiten" class="level3">
+<h3 class="anchored" data-anchor-id="worthäufigkeiten">Worthäufigkeiten</h3>
+<p>Einen weiteren interessanten Einblick gewähren die Worthäufigkeiten. Durch die Visualisierung der am meisten verwendeten Wörter und Wortpaare ist es bereits möglich, einen Einblick in das Vokabular zu erhalten und dieses unter den Klassen zu vergleichen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tweets_count_senti <span class="ot">&lt;-</span> tweets_senti <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(class) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(class, word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Zusammenführen von "word_counts" und "class_totals" nach der Klasse</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>word_counts <span class="ot">&lt;-</span> <span class="fu">left_join</span>(tweets_count_senti, class_totals, <span class="at">by =</span> <span class="st">"class"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Berechnung der gewichteten Häufigkeit</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>word_counts <span class="ot">&lt;-</span> word_counts <span class="sc">%&gt;%</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weighted_frequency =</span> n <span class="sc">/</span> class_total)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualisierung der gewichteten Häufigkeiten</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(word_counts, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(word, weighted_frequency), <span class="at">y =</span> weighted_frequency, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>class, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Gewichtete Häufigkeiten der Wörter in Abhängigkeit von der Klasse"</span>,</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Wort"</span>,</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Gewichtete Häufigkeit"</span>) <span class="sc">+</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> Uriah_Flint)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Hatespeech_Twitter_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Beim Vergleich der häufigsten Wörter fällt direkt auf, dass Beleidigungen und Schimpfwörter charakteristisch für Hate Speech sind, da die Liste der zehn häufigsten Wörter fast nur aus solchen Einträgen besteht. Das Vokabular der anderen Kategorie ist im Vergleich dazu überaus harmlos. Diese Harmlosigkeit wird durch das häufigste Wort “lol” noch auf die Spitze getrieben. Interessant ist jedoch auch, dass sich das Wort “hate” in dieser Liste wiederfindet. Hier wäre es interessant, im weiteren Verlauf der Analyse den Kontext in Erfahrung zu bringen. Auf der anderen Seite ist “hate” jedoch ein sehr gängiges Wort und dient zur Beschreibung normaler Gefühlszustände, ohne direkt Hass zu verbreiten.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tweets_bigram <span class="ot">&lt;-</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  d_train <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(bigram, tweet, <span class="at">token =</span> <span class="st">"ngrams"</span>, <span class="at">n =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bigram))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>tweets_bigram <span class="ot">&lt;-</span> tweets_bigram <span class="sc">%&gt;%</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(bigram, <span class="fu">c</span>(<span class="st">"word1"</span>, <span class="st">"word2"</span>), <span class="at">sep =</span> <span class="st">" "</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word1 <span class="sc">%in%</span> stop_words<span class="sc">$</span>word) <span class="sc">%&gt;%</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word2 <span class="sc">%in%</span> stop_words<span class="sc">$</span>word)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>tweets_bigram <span class="sc">%&gt;%</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(bigram, word1, word2, <span class="at">sep =</span> <span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(class) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(bigram, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(n, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bigram =</span> <span class="fu">reorder</span>(bigram, n)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n, bigram, <span class="at">fill =</span> class) ) <span class="sc">+</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>class, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Bigramme nach Häufigkeit"</span>,</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Häufigkeit"</span>,</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Bigramm"</span>) <span class="sc">+</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> Uriah_Flint) <span class="sc">+</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Hatespeech_Twitter_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Die Analyse der häufigsten Wortpaare deckt sich mit der Analyse der häufigsten Wörter. Sie bringt insofern neue Erkenntnisse, als deutlich wird, dass sich der Hass hauptsächlich gegen ethnische und sexuelle Minderheiten richtet. Dies wird anhand von Begriffen wie “white trash” und “fucking faggot” deutlich. Bemerkenswert ist ebenfalls, dass es sich keinesfalls hauptsächlich um Hass gegen Schwarze handelt, sondern genauso auch Menschen mit heller Hautfarbe ethnisch beleidigt werden.</p>
+</section>
+<section id="wortbeziehungen" class="level3">
+<h3 class="anchored" data-anchor-id="wortbeziehungen">Wortbeziehungen</h3>
+<p>Im Folgenden werden alle Wortpaare, die häufiger als sechs Mal vorkommen, visualisiert. Hierdurch werden die Kontexte der Wörter deutlicher und die Beziehungen können uns Aufschluss darüber geben, in welchem Zusammenhang “hate” verwendet wird.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tweets_bigram_count <span class="ot">&lt;-</span> tweets_bigram <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">count</span>(word1, word2, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>visualize_bigrams <span class="ot">&lt;-</span> <span class="cf">function</span>(bigrams) {</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">2016</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> grid<span class="sc">::</span><span class="fu">arrow</span>(<span class="at">type =</span> <span class="st">"closed"</span>, <span class="at">length =</span> <span class="fu">unit</span>(.<span class="dv">15</span>, <span class="st">"inches"</span>))</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  bigrams <span class="sc">%&gt;%</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">graph_from_data_frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"fr"</span>) <span class="sc">+</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_edge_link</span>(<span class="fu">aes</span>(<span class="at">edge_alpha =</span> n), <span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">arrow =</span> a) <span class="sc">+</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_node_point</span>(<span class="at">color =</span> <span class="st">"#6FB899"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>tweets_bigram_count <span class="sc">%&gt;%</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">6</span>,</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">str_detect</span>(word1, <span class="st">"</span><span class="sc">\\</span><span class="st">d"</span>),</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">str_detect</span>(word2, <span class="st">"</span><span class="sc">\\</span><span class="st">d"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visualize_bigrams</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using the `size` aesthetic in this geom was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` in the `default_aes` field and elsewhere instead.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Hatespeech_Twitter_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Zum Kontext des Wortes “hate” erhalten wir hier keine neuen Hinweise. Jedoch wird klar ersichtlich, in welchen Kombinationen Schimpfwörter verwendet werden. Außerdem werden Ambiguitäten deutlich, da Wörter wie “trash” und “colored” sowohl als rassistische Beleidigung als auch als Beschreibung von Alltagsgegenständen auftauchen.</p>
+</section>
+<section id="sentimentanalyse" class="level3">
+<h3 class="anchored" data-anchor-id="sentimentanalyse">Sentimentanalyse</h3>
+<p>Zweck der Sentimentanalyse ist es, herauszufinden, ob die Sentimentausprägungen die beiden Klassen klar voneinander abgrenzen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zählen der negativen und positiven Sentimente</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>tweets_senti2 <span class="ot">&lt;-</span> tweets_senti <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(class) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(neg_pos, <span class="at">name =</span> <span class="st">"count"</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualisierung der Sentimentantanteile nach Klasse</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tweets_senti2, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> count, <span class="at">fill =</span> neg_pos)) <span class="sc">+</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sentimentanteile nach Klasse"</span>,</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Sentiment"</span>) <span class="sc">+</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> class) <span class="sc">+</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> count), <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> Uriah_Flint)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Hatespeech_Twitter_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In obigem Diagramm wird ersichtlich, dass hasslastige Tweets überwiegend negativ sind, während sich die Sentimente der anderen Klasse in der Waage halten. Das Sentiment ist also ein entscheidender Faktor bei der Klassifizierung von Hate Speech und sollte beim Training des Modells berücksichtigt werden.</p>
+</section>
+<section id="themenanalyse" class="level3">
+<h3 class="anchored" data-anchor-id="themenanalyse">Themenanalyse</h3>
+<p>Die Themenanalyse soll Aufschluss darüber geben, ob es bestimmte Themengebiete gibt, die charakteristisch für Hate Speech sind.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>tweets_token_counts_hate <span class="ot">&lt;-</span> tweets_token <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(class <span class="sc">==</span> <span class="st">"hate speech"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">19</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(word)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>tweets_dtm_hate <span class="ot">&lt;-</span> <span class="fu">DocumentTermMatrix</span>(tweets_token_counts_hate)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>tweets_dtm_hate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>tweets_lda_hate <span class="ot">&lt;-</span> <span class="fu">LDA</span>(tweets_dtm_hate, <span class="at">k =</span> <span class="dv">4</span>, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">seed =</span> <span class="dv">42</span>))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>tweets_themen_hate <span class="ot">&lt;-</span> <span class="fu">tidy</span>(tweets_lda_hate, <span class="at">matrix =</span> <span class="st">"beta"</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>tweets_themen_hate <span class="ot">&lt;-</span> tweets_themen_hate <span class="sc">%&gt;%</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(topic) <span class="sc">%&gt;%</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(beta, <span class="at">n =</span> <span class="dv">7</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(topic, <span class="sc">-</span>beta)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>tweets_themen_hate <span class="sc">%&gt;%</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">term =</span> <span class="fu">reorder_within</span>(term, beta, topic)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(beta, term, <span class="at">fill =</span> <span class="fu">factor</span>(topic))) <span class="sc">+</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> topic, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reordered</span>() <span class="sc">+</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Themen von Hate Speech"</span>) <span class="sc">+</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> Uriah_Flint)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Hatespeech_Twitter_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Obwohl sich die Themen nicht eindeutig voneinander abgrenzen, sind dennoch schwache Muster erkennbar. Thema Eins scheint sich vor allem aus allgemeinen Obszönitäten zusammenzusetzen, während das zweite Thema aus Beleidigungen gegen Schwule und Schwarze und etwas härteren Wörtern wie “kill” und “shit” besteht. In Thema Drei und Vier treten Beleidigungen gegen Frauen sowie die LGBTQ-Community in den Vordergrund. Viel wichtiger als diese kleinen Unterschiede ist jedoch das große Bild der Themen, welches wie schon bei der Analyse der Worthäufigkeiten festgestellt, hauptsächlich aus ethnischen und sexuellen Beleidigungen und Schimpfwörtern besteht.</p>
+</section>
+<section id="schimpfwörter" class="level3">
+<h3 class="anchored" data-anchor-id="schimpfwörter">Schimpfwörter</h3>
+<p>Schimpfwörter scheinen eine große Rolle bei Hate Speech zu spielen. Deshalb erachte ich es als sinnvoll, Schimpfwörter als Feature in das spätere Rezept mit aufzunehmen. Hierzu verwende ich diese Liste, welche ich um ein paar Einträge (rassistische Beleidigungen) ergänzt habe: https://www.insult.wiki/list-of-insults.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>insults <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"insults.csv"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>tweets_token <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(class) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(insults, <span class="at">by =</span> <span class="st">"word"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">insult =</span> <span class="fu">case_when</span>(<span class="fu">is.na</span>(value) <span class="sc">==</span> <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Nein"</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>                            <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Ja"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>value) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> n, <span class="at">fill =</span> insult)) <span class="sc">+</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Anteil der Beleidigungen nach Klasse"</span>,</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Beleidigung"</span>) <span class="sc">+</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> class, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> Uriah_Flint)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Hatespeech_Twitter_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Tatsächlich ist der Anteil der Beleidigungen in Hate Speech Tweets höher, jedoch fällt er deutlich geringer aus als erwartet.</p>
+</section>
+<section id="emojis" class="level3">
+<h3 class="anchored" data-anchor-id="emojis">Emojis</h3>
+<p>Die Überlegung, dass Hate Speech feindselige Emojis enthält, ist sehr plausibel. Um aggressive Emojis zu kennzeichnen, verwende ich ein von mir erstelltes Lexikon, das solche Emojis enthält und schreibe eine Funktion, die zählt, wieviele feindselige Emojis in einem Tweet vorkommen. Der Totenkopf ist nicht in der Liste der feindseligen Emojis enthalten, da dieser hauptsächlich als Synonym oder Steigerung des Lach-Emojis verwendet wird (engl.: “That’s too funny. I’m dead!”).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>hostile_emojis <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"hostile_emojis.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>count_hostile_emojis <span class="ot">&lt;-</span> <span class="cf">function</span>(text) {</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialisiere einen leeren Vektor für die Zählungen</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  counts <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(hostile_emojis<span class="sc">$</span>emoji))</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Iteriere über jedes Emoji und zähle die Übereinstimmungen im Text</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(hostile_emojis<span class="sc">$</span>emoji)) {</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    counts[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">lengths</span>(<span class="fu">str_extract_all</span>(text, hostile_emojis<span class="sc">$</span>emoji[i])))</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Summiere die Gesamtanzahl der Übereinstimmungen</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  total_count <span class="ot">&lt;-</span> <span class="fu">sum</span>(counts)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(total_count)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>dummy <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"🗑"</span>, <span class="st">"bogen"</span>, <span class="st">"😠"</span>, <span class="st">"👹"</span>, <span class="st">"💩"</span>, <span class="st">"baby"</span>, <span class="st">"und"</span>, <span class="st">"🆗"</span>)</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="fu">count_hostile_emojis</span>(dummy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>d_train <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hostile_emojis_n =</span> <span class="fu">map_int</span>(tweet, count_hostile_emojis)) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="st">`</span><span class="at">Feindselige Emojis</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(hostile_emojis_n <span class="sc">==</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  `Feindselige Emojis`
+                 &lt;dbl&gt;
+1                    0</code></pre>
+</div>
+</div>
+<p>Die Vermutung, dass Hate Speech feindselige Emojis enthält, stellt sich in diesem Fall als falsch heraus. Da es keinen einzigen Emoji dieser Art gibt, wird dieser Ansatz für die Modellierung verworfen.</p>
+</section>
+</section>
+<section id="modellierung" class="level2">
+<h2 class="anchored" data-anchor-id="modellierung">Modellierung</h2>
+<p>In der Modellierung ist es nun das Ziel, einen Algorithmus darauf zu trainieren, möglichst präzise Hate Speech vorherzusagen. Der Algorithmus meiner Wahl ist der XGBoost. Zunächst werden jedoch noch Rezepte formuliert, die die Erkenntnisse aus der Analyse nun in nützliche Features umwandeln.</p>
+<section id="rezepte-definieren" class="level3">
+<h3 class="anchored" data-anchor-id="rezepte-definieren">Rezepte definieren</h3>
+<p>Rezept Eins enthält Schimpfwörter, Sentimentwerte und die Themenanalyse. Außerdem werden noch die üblichen Textverarbeitungsschritte durchgeführt sowie ein Tokenfilter angewandt.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>rec1 <span class="ot">&lt;-</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">recipe</span>(class <span class="sc">~</span> ., <span class="at">data =</span> d_train) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_text_normalization</span>(tweet) <span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_mutate</span>(<span class="at">insult =</span> <span class="fu">get_sentiment</span>(tweet,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">method =</span> <span class="st">"custom"</span>,</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">lexicon =</span> insults)) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_mutate</span>(<span class="at">senti =</span> <span class="fu">get_sentiment</span>(tweet)) <span class="sc">%&gt;%</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_tokenize</span>(tweet, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_tokenfilter</span>(tweet, <span class="at">max_tokens =</span> <span class="fl">1e2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_stopwords</span>(tweet, <span class="at">language =</span> <span class="st">"en"</span>, <span class="at">stopword_source =</span> <span class="st">"snowball"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_stem</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_lda</span>(tweet, <span class="at">num_topics =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Rezept Zwei enthält statt der Themenanalyse die Tf-idf-Maße.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>rec2 <span class="ot">&lt;-</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">recipe</span>(class <span class="sc">~</span> ., <span class="at">data =</span> d_train) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">update_role</span>(id, <span class="at">new_role =</span> <span class="st">"id"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_text_normalization</span>(tweet) <span class="sc">%&gt;%</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_mutate</span>(<span class="at">insult =</span> <span class="fu">get_sentiment</span>(tweet,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">method =</span> <span class="st">"custom"</span>,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">lexicon =</span> insults)) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_mutate</span>(<span class="at">senti =</span> <span class="fu">get_sentiment</span>(tweet)) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_tokenize</span>(tweet, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_tokenfilter</span>(tweet, <span class="at">max_tokens =</span> <span class="fl">1e2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_stopwords</span>(tweet, <span class="at">language =</span> <span class="st">"en"</span>, <span class="at">stopword_source =</span> <span class="st">"snowball"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_stem</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_tfidf</span>(tweet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>baked <span class="ot">&lt;-</span> rec1 <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prep</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>baked</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4,474 × 10
+      id class      insult senti lda_tweet_1 lda_tweet_2 lda_tweet_3 lda_tweet_4
+   &lt;dbl&gt; &lt;fct&gt;       &lt;int&gt; &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+ 1    85 hate spee…      1 -0.25       0            0           0            0  
+ 2    90 hate spee…      1  1          0.1          0.3         0            0.6
+ 3   186 hate spee…      1 -1          0.433        0.4         0            0.1
+ 4   204 hate spee…      1 -0.75       0            0           0.3          0.2
+ 5   206 hate spee…      2 -0.75       0            0.3         0.5          0  
+ 6   221 hate spee…      0  1.4        0            0           0            0.2
+ 7   263 hate spee…      1 -1.75       0            0           0.1          0.4
+ 8   317 hate spee…      1 -0.55       0            0           0.5          0  
+ 9   320 hate spee…      0 -0.35       0.1          0.1         0            0.2
+10   354 hate spee…      1 -0.75       0.25         0.15        0.05         0.5
+# ℹ 4,464 more rows
+# ℹ 2 more variables: lda_tweet_5 &lt;dbl&gt;, lda_tweet_6 &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>baked2 <span class="ot">&lt;-</span> rec2 <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prep</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>baked2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4,474 × 44
+      id class     insult senti tfidf_tweet_amp tfidf_tweet_ass tfidf_tweet_back
+   &lt;dbl&gt; &lt;fct&gt;      &lt;int&gt; &lt;dbl&gt;           &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;
+ 1    85 hate spe…      1 -0.25               0               0                0
+ 2    90 hate spe…      1  1                  0               0                0
+ 3   186 hate spe…      1 -1                  0               0                0
+ 4   204 hate spe…      1 -0.75               0               0                0
+ 5   206 hate spe…      2 -0.75               0               0                0
+ 6   221 hate spe…      0  1.4                0               0                0
+ 7   263 hate spe…      1 -1.75               0               0                0
+ 8   317 hate spe…      1 -0.55               0               0                0
+ 9   320 hate spe…      0 -0.35               0               0                0
+10   354 hate spe…      1 -0.75               0               0                0
+# ℹ 4,464 more rows
+# ℹ 37 more variables: tfidf_tweet_bird &lt;dbl&gt;, tfidf_tweet_birds &lt;dbl&gt;,
+#   tfidf_tweet_bitch &lt;dbl&gt;, tfidf_tweet_can &lt;dbl&gt;, tfidf_tweet_charlie &lt;dbl&gt;,
+#   tfidf_tweet_colored &lt;dbl&gt;, tfidf_tweet_day &lt;dbl&gt;, tfidf_tweet_faggot &lt;dbl&gt;,
+#   tfidf_tweet_fuck &lt;dbl&gt;, tfidf_tweet_get &lt;dbl&gt;, tfidf_tweet_ghetto &lt;dbl&gt;,
+#   tfidf_tweet_go &lt;dbl&gt;, tfidf_tweet_good &lt;dbl&gt;, tfidf_tweet_got &lt;dbl&gt;,
+#   tfidf_tweet_hate &lt;dbl&gt;, tfidf_tweet_just &lt;dbl&gt;, tfidf_tweet_know &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+</section>
+<section id="modelle-definieren" class="level3">
+<h3 class="anchored" data-anchor-id="modelle-definieren">Modelle definieren</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>xgb <span class="ot">&lt;-</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">boost_tree</span>(</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mtry =</span> <span class="fu">tune</span>(), </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">trees =</span> <span class="fu">tune</span>(), </span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">tree_depth =</span> <span class="fu">tune</span>(), </span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">learn_rate =</span> <span class="fu">tune</span>(), </span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">min_n =</span> <span class="fu">tune</span>(), </span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">loss_reduction =</span> <span class="fu">tune</span>()</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"xgboost"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">translate</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="workflowset-erstellen" class="level3">
+<h3 class="anchored" data-anchor-id="workflowset-erstellen">Workflowset erstellen</h3>
+<p>Das Modell wird getuned. Hierfür wird zweifache Kreuzvalidierung mit einer Wiederholung verwendet. Der geringe Performance-Zuwachs durch intensiveres Tuning mit mehr Folds und Wiederholungen würde in diesem Fall nicht die höhere Rechenzeit rechtfertigen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>preproc <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">rec1 =</span> rec1, <span class="at">rec2 =</span> rec2)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>models <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">xgb =</span> xgb)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>all_workflows <span class="ot">&lt;-</span> <span class="fu">workflow_set</span>(preproc, models)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>model_set <span class="ot">&lt;-</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>all_workflows <span class="sc">%&gt;%</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="fu">workflow_map</span>(</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">resamples =</span> <span class="fu">vfold_cv</span>(d_train,</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">v =</span> <span class="dv">2</span>, </span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">repeats =</span> <span class="dv">1</span>,</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">strata =</span> class),</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">grid =</span> <span class="dv">7</span>,</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">42</span>,</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">control_resamples</span>(<span class="at">save_pred =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>i 1 of 2 tuning:     rec1_xgb</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>i Creating pre-processing data to finalize unknown parameter: mtry</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'stopwords' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'SnowballC' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'xgboost' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ 1 of 2 tuning:     rec1_xgb (1m 13.7s)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>i 2 of 2 tuning:     rec2_xgb</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>i Creating pre-processing data to finalize unknown parameter: mtry</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ 2 of 2 tuning:     rec2_xgb (1m 25s)</code></pre>
+</div>
+</div>
+</section>
+<section id="ergebnisse" class="level3">
+<h3 class="anchored" data-anchor-id="ergebnisse">Ergebnisse</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>tune<span class="sc">::</span><span class="fu">autoplot</span>(model_set) <span class="sc">+</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Hatespeech_Twitter_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>model_set <span class="sc">%&gt;%</span> </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect_metrics</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 28 × 9
+   wflow_id .config         preproc model .metric .estimator  mean     n std_err
+   &lt;chr&gt;    &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;
+ 1 rec2_xgb Preprocessor1_… recipe  boos… roc_auc binary     0.904     2 0.00857
+ 2 rec2_xgb Preprocessor1_… recipe  boos… roc_auc binary     0.881     2 0.0115 
+ 3 rec2_xgb Preprocessor1_… recipe  boos… accura… binary     0.880     2 0.00246
+ 4 rec2_xgb Preprocessor1_… recipe  boos… roc_auc binary     0.868     2 0.0196 
+ 5 rec2_xgb Preprocessor1_… recipe  boos… accura… binary     0.866     2 0.00112
+ 6 rec2_xgb Preprocessor1_… recipe  boos… accura… binary     0.855     2 0.00983
+ 7 rec2_xgb Preprocessor1_… recipe  boos… roc_auc binary     0.854     2 0.0115 
+ 8 rec2_xgb Preprocessor1_… recipe  boos… roc_auc binary     0.853     2 0.0140 
+ 9 rec2_xgb Preprocessor1_… recipe  boos… roc_auc binary     0.852     2 0.0167 
+10 rec2_xgb Preprocessor1_… recipe  boos… accura… binary     0.848     2 0.00201
+# ℹ 18 more rows</code></pre>
+</div>
+</div>
+<p>Rezept Zwei hat besser abgeschnitten als Rezept Eins. Wählen wir nun das beste Modell aus und fitten es:</p>
+</section>
+<section id="finalisieren" class="level3">
+<h3 class="anchored" data-anchor-id="finalisieren">Finalisieren</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>best_model_params <span class="ot">&lt;-</span> </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_workflow_set_result</span>(model_set, <span class="st">"rec2_xgb"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_best</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: No value of `metric` was given; metric 'roc_auc' will be used.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>best_wf <span class="ot">&lt;-</span> </span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>all_workflows <span class="sc">%&gt;%</span> </span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_workflow</span>(<span class="st">"rec2_xgb"</span>)</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>best_wf_finalized <span class="ot">&lt;-</span> </span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  best_wf <span class="sc">%&gt;%</span> </span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">finalize_workflow</span>(best_model_params)</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>fit_final <span class="ot">&lt;-</span> <span class="fu">fit</span>(best_wf_finalized, <span class="at">data =</span> d_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>fit_final <span class="sc">%&gt;%</span> </span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_fit_parsnip</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Hatespeech_Twitter_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Die Analyse der wichtigsten Prädiktoren deckt sich mit den Erkenntnissen aus der EDA. Die mit Abstand wichtigsten Features sind die Beleidigungen und Sentimentwerte, während die Tf-idf-Maße von Beleidigungen ebenfalls viel zur Prediction beitragen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>wf_preds <span class="ot">&lt;-</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect_predictions</span>(model_set)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>wf_preds <span class="sc">%&gt;%</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(wflow_id) <span class="sc">%&gt;%</span> </span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">roc_curve</span>(<span class="at">truth =</span> class, <span class="st">`</span><span class="at">.pred_hate speech</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autoplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Hatespeech_Twitter_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Die Performance im Train-Sample fällt sehr gut aus, da die Vorhersagen mit einer Genauigkeit von rund 90 Prozent sehr präzise sind.</p>
+</section>
+</section>
+<section id="vorhersagen" class="level2">
+<h2 class="anchored" data-anchor-id="vorhersagen">Vorhersagen</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit_final, d_test)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>preds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,119 × 1
+   .pred_class
+   &lt;fct&gt;      
+ 1 other      
+ 2 other      
+ 3 hate speech
+ 4 other      
+ 5 hate speech
+ 6 other      
+ 7 other      
+ 8 other      
+ 9 other      
+10 other      
+# ℹ 1,109 more rows</code></pre>
+</div>
+</div>
+<section id="bestimmen-der-vorhersagegüte-im-test-sample" class="level3">
+<h3 class="anchored" data-anchor-id="bestimmen-der-vorhersagegüte-im-test-sample">Bestimmen der Vorhersagegüte im Test-Sample</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>d_test1 <span class="ot">&lt;-</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  d_test <span class="sc">%&gt;%</span>  </span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">bind_cols</span>(preds) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class =</span> <span class="fu">as.factor</span>(class))</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>d_test1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,119 × 4
+      id tweet                                                 class .pred_class
+   &lt;dbl&gt; &lt;chr&gt;                                                 &lt;fct&gt; &lt;fct&gt;      
+ 1    66 "\"@AllAboutManFeet:  woof woof and hot soles"        other other      
+ 2    70 "\"@ArizonasFinest: Why the eggplant emoji doe?\"y h… other other      
+ 3   111 "\"@DevilGrimz: @VigxRArts you're fucking gay, black… hate… hate speech
+ 4   116 "\"@DomWorldPeace: Baseball season for the win. #Yan… other other      
+ 5   151 "\"@JReebo: Who wants to get there nose in these bad… other hate speech
+ 6   192 "\"@Mesha_nojas: @_Vontethekidd &amp;#;&amp;#;&amp;#;&amp;#;&amp;#;\" I … other other      
+ 7   245 "\"@Stephenwildboy: Chilling &amp;#;&amp;#;  sexy scally lad" other other      
+ 8   251 "\"@TEE_JONEZ: @KingCuh @stanleys I'm not mad cuh ha… other other      
+ 9   318 "\"@ayyee_ceee_: One mans trash &amp;#; is another mans … other other      
+10   341 "\"@hxhassan: Jihadi patron Hajjaj al-Ajmi is arrest… other other      
+# ℹ 1,109 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>my_metrics <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(accuracy, f_meas)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">my_metrics</span>(d_test1,</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">truth =</span> class,</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">estimate =</span> .pred_class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  .metric  .estimator .estimate
+  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
+1 accuracy binary         0.883
+2 f_meas   binary         0.744</code></pre>
+</div>
+</div>
+<p>Auch im Test-Sample bewährt sich das Modell mit einer sehr hohen Genauigkeit.</p>
+</section>
+</section>
+<section id="klassifikation-mit-transformer" class="level2">
+<h2 class="anchored" data-anchor-id="klassifikation-mit-transformer">Klassifikation mit Transformer</h2>
+<p>Ein weiterer Ansatz zur Klassifikation von Hate Speech ist es, kein eigenes Modell zu trainieren, sondern Zero-Shot-Learning anzuwenden. Das ergibt natürlich am meisten Sinn mit einem sehr fortgeschrittenen und komplexen Transformer-Modell, das bereits auf die Erkennung von Hate Speech trainiert wurde. Im Folgenden wird daher das Modell <code>roberta-hate-speech-dynabench-r4-target</code> von Facebook, welches auf Huggingface.co verfügbar ist, um die Tweets nach Hate Speech zu klassifizieren. Hierzu wird der Befehl <code>pipeline</code> aus der <code>transformers</code>-Library von Huggingface genutzt, um das Modell zu laden und auf das Test-Sample anzuwenden.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'reticulate' was built under R version 4.2.3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">"C:/Users/rapha/venv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> pipeline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>classifier <span class="op">=</span> pipeline(<span class="st">"text-classification"</span>, model<span class="op">=</span><span class="st">"facebook/roberta-hate-speech-dynabench-r4-target"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>WARNING:tensorflow:From C:\Users\rapha\venv\Lib\site-packages\keras\src\backend.py:873: The name tf.get_default_graph is deprecated. Please use tf.compat.v1.get_default_graph instead.
+
+Some weights of the PyTorch model were not used when initializing the TF 2.0 model TFRobertaForSequenceClassification: ['roberta.embeddings.position_ids']
+- This IS expected if you are initializing TFRobertaForSequenceClassification from a PyTorch model trained on another task or with another architecture (e.g. initializing a TFBertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing TFRobertaForSequenceClassification from a PyTorch model that you expect to be exactly identical (e.g. initializing a TFBertForSequenceClassification model from a BertForSequenceClassification model).
+All the weights of TFRobertaForSequenceClassification were initialized from the PyTorch model.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use TFRobertaForSequenceClassification for predictions without further training.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>tweets <span class="ot">&lt;-</span> d_test<span class="sc">$</span>tweet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>tweets <span class="op">=</span> r.tweets</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> classifier(tweets)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> py<span class="sc">$</span>results</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">lapply</span>(result, <span class="cf">function</span>(element) element<span class="sc">$</span>label)</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>tweets_hate <span class="ot">&lt;-</span> <span class="fu">cbind</span>(d_test, <span class="at">pred =</span> <span class="fu">unlist</span>(labels))</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>tweets_hate <span class="ot">&lt;-</span> tweets_hate <span class="sc">%&gt;%</span> </span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class =</span> <span class="fu">as.factor</span>(class),</span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">pred =</span> <span class="fu">case_when</span>(pred <span class="sc">==</span> <span class="st">"hate"</span> <span class="sc">~</span> <span class="st">"hate speech"</span>,</span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>            pred <span class="sc">==</span> <span class="st">"nothate"</span> <span class="sc">~</span> <span class="st">"other"</span>),</span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">pred =</span> <span class="fu">as.factor</span>(pred))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>my_metrics2 <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(accuracy, f_meas)</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">my_metrics2</span>(tweets_hate,</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">truth =</span> class,</span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">estimate =</span> pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  .metric  .estimator .estimate
+  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;
+1 accuracy binary         0.882
+2 f_meas   binary         0.797</code></pre>
+</div>
+</div>
+<p>Die Performance des Modells ist objektiv gesehen gut, verglichen mit dem XGBoost mit einer Minute Trainingszeit fällt sie jedoch mager aus.</p>
+</section>
+<section id="neuronales-netzwerk" class="level2">
+<h2 class="anchored" data-anchor-id="neuronales-netzwerk">Neuronales Netzwerk</h2>
+<p>Bisher wurde Hate Speech sowohl mit Hilfe eines auf den konkreten Daten trainierten Shallow-Learner als auch mit Hilfe eines vortrainierten Transformers klassifiziert. Im letzten Schritt dieses Posts sollen die Stärken dieser beiden Ansätze kombiniert werden, indem ein Deep-Learning-Algorithums, genauer gesagt ein Neuronales Netzwerk, auf den vorliegenden Daten trainiert wird. Das neuronale Netz verwendet ein vortrainiertes Wort-Einbettungsmodell mit 50 Dimensionen, das für die deutsche Sprache optimiert ist. Dieses Embedding-Modell ermöglicht es dem Netzwerk, semantische Repräsentationen der Wörter zu erlernen. Das Netzwerk besteht aus einer Eingabeschicht, die das Embedding-Modell enthält, gefolgt von einer vollständig verbundenen Schicht mit 32 Neuronen und einer Sigmoid-Aktivierungsfunktion. Weiterhin gibt es eine Schicht mit 24 Neuronen und einer ReLU-Aktivierung. Die Ausgabeschicht besteht aus einem einzelnen Neuron für binäre Klassifikation. Das Netzwerk wird mit dem Adam-Optimizer kompiliert und die binäre Kreuzentropie wird als Verlustfunktion verwendet. Die Accuracy wird als Metrik überwacht. Das Training erfolgt über 3 Epochen mit einer Batch-Größe von 48, wobei die Validierung anhand des Test-Samples durchgeführt wird.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow_hub <span class="im">as</span> hub</span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.models <span class="im">import</span> Sequential</span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.layers <span class="im">import</span> Dense</span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
+<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> make_scorer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>d_train <span class="op">=</span> r.d_train</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>d_test <span class="op">=</span> r.d_test</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> d_train[<span class="st">"tweet"</span>].values</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> d_test[<span class="st">"tweet"</span>].values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>d_train[<span class="st">"y"</span>] <span class="op">=</span> d_train[<span class="st">"class"</span>].<span class="bu">map</span>({<span class="st">"other"</span> : <span class="dv">0</span>, <span class="st">"hate speech"</span> : <span class="dv">1</span>})</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> d_train.loc[:, <span class="st">"y"</span>].values</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>d_test[<span class="st">"y"</span>] <span class="op">=</span> d_test[<span class="st">"class"</span>].<span class="bu">map</span>({<span class="st">"other"</span> : <span class="dv">0</span>, <span class="st">"hate speech"</span> : <span class="dv">1</span>})</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> d_test.loc[:, <span class="st">"y"</span>].values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>embedding <span class="op">=</span> <span class="st">"https://tfhub.dev/google/nnlm-de-dim50/2"</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>hub_layer <span class="op">=</span> hub.KerasLayer(embedding, input_shape<span class="op">=</span>[],</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>                           dtype<span class="op">=</span>tf.string, trainable<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>tf.random.set_seed(<span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> tf.keras.Sequential()</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>model.add(hub_layer)</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>model.add(tf.keras.layers.Dense(<span class="dv">32</span>, activation<span class="op">=</span><span class="st">'sigmoid'</span>))</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>model.add(tf.keras.layers.Dense(<span class="dv">24</span>, activation<span class="op">=</span><span class="st">'relu'</span>))</span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>model.add(tf.keras.layers.Dense(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">'adam'</span>,</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>              loss<span class="op">=</span>tf.keras.losses.BinaryCrossentropy(from_logits<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>              metrics<span class="op">=</span>[<span class="st">'accuracy'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>WARNING:tensorflow:From C:\Users\rapha\venv\Lib\site-packages\keras\src\optimizers\__init__.py:309: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+WARNING:tensorflow:From C:\Users\rapha\venv\Lib\site-packages\keras\src\optimizers\__init__.py:309: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>model.fit(X_train, y_train,</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>epochs<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>batch_size<span class="op">=</span><span class="dv">48</span>,</span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>validation_data<span class="op">=</span>(X_test, y_test),</span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>verbose <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch 1/3
+
+ 1/94 [..............................] - ETA: 3:06 - loss: 0.6014 - accuracy: 0.7500
+ 2/94 [..............................] - ETA: 1:45 - loss: 0.5919 - accuracy: 0.7604
+ 3/94 [..............................] - ETA: 1:05 - loss: 0.5953 - accuracy: 0.7500
+ 4/94 [&gt;.............................] - ETA: 51s - loss: 0.6090 - accuracy: 0.7240 
+ 5/94 [&gt;.............................] - ETA: 46s - loss: 0.6009 - accuracy: 0.7333
+ 6/94 [&gt;.............................] - ETA: 42s - loss: 0.5789 - accuracy: 0.7604
+ 7/94 [=&gt;............................] - ETA: 38s - loss: 0.5799 - accuracy: 0.7560
+ 8/94 [=&gt;............................] - ETA: 37s - loss: 0.5771 - accuracy: 0.7578
+ 9/94 [=&gt;............................] - ETA: 35s - loss: 0.5706 - accuracy: 0.7639
+10/94 [==&gt;...........................] - ETA: 33s - loss: 0.5739 - accuracy: 0.7583
+11/94 [==&gt;...........................] - ETA: 31s - loss: 0.5629 - accuracy: 0.7689
+12/94 [==&gt;...........................] - ETA: 30s - loss: 0.5633 - accuracy: 0.7674
+13/94 [===&gt;..........................] - ETA: 29s - loss: 0.5618 - accuracy: 0.7676
+14/94 [===&gt;..........................] - ETA: 28s - loss: 0.5620 - accuracy: 0.7664
+15/94 [===&gt;..........................] - ETA: 27s - loss: 0.5646 - accuracy: 0.7625
+16/94 [====&gt;.........................] - ETA: 26s - loss: 0.5658 - accuracy: 0.7604
+17/94 [====&gt;.........................] - ETA: 25s - loss: 0.5680 - accuracy: 0.7574
+18/94 [====&gt;.........................] - ETA: 24s - loss: 0.5713 - accuracy: 0.7535
+19/94 [=====&gt;........................] - ETA: 24s - loss: 0.5768 - accuracy: 0.7478
+20/94 [=====&gt;........................] - ETA: 23s - loss: 0.5782 - accuracy: 0.7458
+21/94 [=====&gt;........................] - ETA: 23s - loss: 0.5752 - accuracy: 0.7480
+22/94 [======&gt;.......................] - ETA: 22s - loss: 0.5745 - accuracy: 0.7481
+23/94 [======&gt;.......................] - ETA: 21s - loss: 0.5710 - accuracy: 0.7509
+24/94 [======&gt;.......................] - ETA: 21s - loss: 0.5734 - accuracy: 0.7483
+25/94 [======&gt;.......................] - ETA: 20s - loss: 0.5730 - accuracy: 0.7483
+26/94 [=======&gt;......................] - ETA: 20s - loss: 0.5791 - accuracy: 0.7420
+27/94 [=======&gt;......................] - ETA: 19s - loss: 0.5833 - accuracy: 0.7377
+28/94 [=======&gt;......................] - ETA: 19s - loss: 0.5817 - accuracy: 0.7388
+29/94 [========&gt;.....................] - ETA: 19s - loss: 0.5863 - accuracy: 0.7342
+30/94 [========&gt;.....................] - ETA: 18s - loss: 0.5826 - accuracy: 0.7375
+31/94 [========&gt;.....................] - ETA: 18s - loss: 0.5797 - accuracy: 0.7399
+32/94 [=========&gt;....................] - ETA: 17s - loss: 0.5784 - accuracy: 0.7409
+33/94 [=========&gt;....................] - ETA: 17s - loss: 0.5765 - accuracy: 0.7424
+34/94 [=========&gt;....................] - ETA: 17s - loss: 0.5786 - accuracy: 0.7402
+35/94 [==========&gt;...................] - ETA: 16s - loss: 0.5769 - accuracy: 0.7417
+36/94 [==========&gt;...................] - ETA: 16s - loss: 0.5759 - accuracy: 0.7425
+37/94 [==========&gt;...................] - ETA: 16s - loss: 0.5762 - accuracy: 0.7421
+38/94 [===========&gt;..................] - ETA: 15s - loss: 0.5735 - accuracy: 0.7445
+39/94 [===========&gt;..................] - ETA: 15s - loss: 0.5730 - accuracy: 0.7447
+40/94 [===========&gt;..................] - ETA: 15s - loss: 0.5714 - accuracy: 0.7458
+41/94 [============&gt;.................] - ETA: 14s - loss: 0.5705 - accuracy: 0.7464
+42/94 [============&gt;.................] - ETA: 14s - loss: 0.5680 - accuracy: 0.7485
+43/94 [============&gt;.................] - ETA: 14s - loss: 0.5703 - accuracy: 0.7461
+44/94 [=============&gt;................] - ETA: 13s - loss: 0.5705 - accuracy: 0.7457
+45/94 [=============&gt;................] - ETA: 13s - loss: 0.5711 - accuracy: 0.7449
+46/94 [=============&gt;................] - ETA: 13s - loss: 0.5709 - accuracy: 0.7450
+47/94 [==============&gt;...............] - ETA: 12s - loss: 0.5692 - accuracy: 0.7465
+48/94 [==============&gt;...............] - ETA: 12s - loss: 0.5684 - accuracy: 0.7470
+49/94 [==============&gt;...............] - ETA: 12s - loss: 0.5696 - accuracy: 0.7457
+50/94 [==============&gt;...............] - ETA: 11s - loss: 0.5694 - accuracy: 0.7458
+51/94 [===============&gt;..............] - ETA: 11s - loss: 0.5687 - accuracy: 0.7463
+52/94 [===============&gt;..............] - ETA: 11s - loss: 0.5680 - accuracy: 0.7468
+53/94 [===============&gt;..............] - ETA: 11s - loss: 0.5672 - accuracy: 0.7472
+54/94 [================&gt;.............] - ETA: 10s - loss: 0.5679 - accuracy: 0.7465
+55/94 [================&gt;.............] - ETA: 10s - loss: 0.5706 - accuracy: 0.7439
+56/94 [================&gt;.............] - ETA: 10s - loss: 0.5719 - accuracy: 0.7426
+57/94 [=================&gt;............] - ETA: 9s - loss: 0.5700 - accuracy: 0.7442 
+58/94 [=================&gt;............] - ETA: 9s - loss: 0.5690 - accuracy: 0.7450
+59/94 [=================&gt;............] - ETA: 9s - loss: 0.5687 - accuracy: 0.7451
+60/94 [==================&gt;...........] - ETA: 9s - loss: 0.5685 - accuracy: 0.7451
+61/94 [==================&gt;...........] - ETA: 8s - loss: 0.5676 - accuracy: 0.7459
+62/94 [==================&gt;...........] - ETA: 8s - loss: 0.5666 - accuracy: 0.7466
+63/94 [===================&gt;..........] - ETA: 8s - loss: 0.5682 - accuracy: 0.7450
+64/94 [===================&gt;..........] - ETA: 7s - loss: 0.5690 - accuracy: 0.7441
+65/94 [===================&gt;..........] - ETA: 7s - loss: 0.5692 - accuracy: 0.7439
+66/94 [====================&gt;.........] - ETA: 7s - loss: 0.5690 - accuracy: 0.7440
+67/94 [====================&gt;.........] - ETA: 7s - loss: 0.5690 - accuracy: 0.7438
+68/94 [====================&gt;.........] - ETA: 6s - loss: 0.5688 - accuracy: 0.7439
+69/94 [=====================&gt;........] - ETA: 6s - loss: 0.5686 - accuracy: 0.7440
+70/94 [=====================&gt;........] - ETA: 6s - loss: 0.5689 - accuracy: 0.7435
+71/94 [=====================&gt;........] - ETA: 6s - loss: 0.5689 - accuracy: 0.7433
+72/94 [=====================&gt;........] - ETA: 5s - loss: 0.5700 - accuracy: 0.7419
+73/94 [======================&gt;.......] - ETA: 5s - loss: 0.5694 - accuracy: 0.7423
+74/94 [======================&gt;.......] - ETA: 5s - loss: 0.5692 - accuracy: 0.7424
+75/94 [======================&gt;.......] - ETA: 5s - loss: 0.5699 - accuracy: 0.7417
+76/94 [=======================&gt;......] - ETA: 4s - loss: 0.5711 - accuracy: 0.7404
+77/94 [=======================&gt;......] - ETA: 4s - loss: 0.5716 - accuracy: 0.7397
+78/94 [=======================&gt;......] - ETA: 4s - loss: 0.5722 - accuracy: 0.7390
+79/94 [========================&gt;.....] - ETA: 3s - loss: 0.5719 - accuracy: 0.7392
+80/94 [========================&gt;.....] - ETA: 3s - loss: 0.5714 - accuracy: 0.7396
+81/94 [========================&gt;.....] - ETA: 3s - loss: 0.5700 - accuracy: 0.7410
+82/94 [=========================&gt;....] - ETA: 3s - loss: 0.5702 - accuracy: 0.7406
+83/94 [=========================&gt;....] - ETA: 2s - loss: 0.5699 - accuracy: 0.7407
+84/94 [=========================&gt;....] - ETA: 2s - loss: 0.5696 - accuracy: 0.7408
+85/94 [==========================&gt;...] - ETA: 2s - loss: 0.5689 - accuracy: 0.7414
+86/94 [==========================&gt;...] - ETA: 2s - loss: 0.5680 - accuracy: 0.7422
+87/94 [==========================&gt;...] - ETA: 1s - loss: 0.5684 - accuracy: 0.7416
+88/94 [===========================&gt;..] - ETA: 1s - loss: 0.5689 - accuracy: 0.7410
+89/94 [===========================&gt;..] - ETA: 1s - loss: 0.5678 - accuracy: 0.7420
+90/94 [===========================&gt;..] - ETA: 1s - loss: 0.5664 - accuracy: 0.7433
+91/94 [============================&gt;.] - ETA: 0s - loss: 0.5651 - accuracy: 0.7443
+92/94 [============================&gt;.] - ETA: 0s - loss: 0.5658 - accuracy: 0.7434
+93/94 [============================&gt;.] - ETA: 0s - loss: 0.5651 - accuracy: 0.7440
+94/94 [==============================] - ETA: 0s - loss: 0.5647 - accuracy: 0.7443
+94/94 [==============================] - 27s 272ms/step - loss: 0.5647 - accuracy: 0.7443 - val_loss: 0.5486 - val_accuracy: 0.7444
+Epoch 2/3
+
+ 1/94 [..............................] - ETA: 21s - loss: 0.6380 - accuracy: 0.6458
+ 2/94 [..............................] - ETA: 21s - loss: 0.5990 - accuracy: 0.6875
+ 3/94 [..............................] - ETA: 20s - loss: 0.5941 - accuracy: 0.6944
+ 4/94 [&gt;.............................] - ETA: 21s - loss: 0.5791 - accuracy: 0.7083
+ 5/94 [&gt;.............................] - ETA: 20s - loss: 0.5733 - accuracy: 0.7125
+ 6/94 [&gt;.............................] - ETA: 21s - loss: 0.5583 - accuracy: 0.7257
+ 7/94 [=&gt;............................] - ETA: 20s - loss: 0.5513 - accuracy: 0.7321
+ 8/94 [=&gt;............................] - ETA: 20s - loss: 0.5540 - accuracy: 0.7292
+ 9/94 [=&gt;............................] - ETA: 20s - loss: 0.5646 - accuracy: 0.7199
+10/94 [==&gt;...........................] - ETA: 20s - loss: 0.5613 - accuracy: 0.7229
+11/94 [==&gt;...........................] - ETA: 20s - loss: 0.5524 - accuracy: 0.7311
+12/94 [==&gt;...........................] - ETA: 20s - loss: 0.5463 - accuracy: 0.7361
+13/94 [===&gt;..........................] - ETA: 20s - loss: 0.5535 - accuracy: 0.7292
+14/94 [===&gt;..........................] - ETA: 20s - loss: 0.5599 - accuracy: 0.7217
+15/94 [===&gt;..........................] - ETA: 20s - loss: 0.5504 - accuracy: 0.7306
+16/94 [====&gt;.........................] - ETA: 20s - loss: 0.5449 - accuracy: 0.7357
+17/94 [====&gt;.........................] - ETA: 20s - loss: 0.5377 - accuracy: 0.7426
+18/94 [====&gt;.........................] - ETA: 19s - loss: 0.5388 - accuracy: 0.7407
+19/94 [=====&gt;........................] - ETA: 19s - loss: 0.5453 - accuracy: 0.7346
+20/94 [=====&gt;........................] - ETA: 19s - loss: 0.5474 - accuracy: 0.7323
+21/94 [=====&gt;........................] - ETA: 19s - loss: 0.5447 - accuracy: 0.7341
+22/94 [======&gt;.......................] - ETA: 19s - loss: 0.5416 - accuracy: 0.7367
+23/94 [======&gt;.......................] - ETA: 18s - loss: 0.5372 - accuracy: 0.7400
+24/94 [======&gt;.......................] - ETA: 18s - loss: 0.5376 - accuracy: 0.7396
+25/94 [======&gt;.......................] - ETA: 18s - loss: 0.5334 - accuracy: 0.7433
+26/94 [=======&gt;......................] - ETA: 18s - loss: 0.5279 - accuracy: 0.7484
+27/94 [=======&gt;......................] - ETA: 17s - loss: 0.5275 - accuracy: 0.7485
+28/94 [=======&gt;......................] - ETA: 17s - loss: 0.5281 - accuracy: 0.7470
+29/94 [========&gt;.....................] - ETA: 17s - loss: 0.5288 - accuracy: 0.7457
+30/94 [========&gt;.....................] - ETA: 17s - loss: 0.5288 - accuracy: 0.7451
+31/94 [========&gt;.....................] - ETA: 17s - loss: 0.5277 - accuracy: 0.7460
+32/94 [=========&gt;....................] - ETA: 16s - loss: 0.5271 - accuracy: 0.7461
+33/94 [=========&gt;....................] - ETA: 16s - loss: 0.5287 - accuracy: 0.7443
+34/94 [=========&gt;....................] - ETA: 16s - loss: 0.5287 - accuracy: 0.7439
+35/94 [==========&gt;...................] - ETA: 16s - loss: 0.5277 - accuracy: 0.7440
+36/94 [==========&gt;...................] - ETA: 15s - loss: 0.5267 - accuracy: 0.7448
+37/94 [==========&gt;...................] - ETA: 15s - loss: 0.5225 - accuracy: 0.7483
+38/94 [===========&gt;..................] - ETA: 15s - loss: 0.5226 - accuracy: 0.7473
+39/94 [===========&gt;..................] - ETA: 15s - loss: 0.5221 - accuracy: 0.7468
+40/94 [===========&gt;..................] - ETA: 14s - loss: 0.5217 - accuracy: 0.7469
+41/94 [============&gt;.................] - ETA: 14s - loss: 0.5215 - accuracy: 0.7464
+42/94 [============&gt;.................] - ETA: 14s - loss: 0.5213 - accuracy: 0.7460
+43/94 [============&gt;.................] - ETA: 14s - loss: 0.5211 - accuracy: 0.7452
+44/94 [=============&gt;................] - ETA: 13s - loss: 0.5202 - accuracy: 0.7453
+45/94 [=============&gt;................] - ETA: 13s - loss: 0.5188 - accuracy: 0.7458
+46/94 [=============&gt;................] - ETA: 13s - loss: 0.5202 - accuracy: 0.7437
+47/94 [==============&gt;...............] - ETA: 13s - loss: 0.5184 - accuracy: 0.7438
+48/94 [==============&gt;...............] - ETA: 12s - loss: 0.5173 - accuracy: 0.7444
+49/94 [==============&gt;...............] - ETA: 12s - loss: 0.5162 - accuracy: 0.7445
+50/94 [==============&gt;...............] - ETA: 12s - loss: 0.5167 - accuracy: 0.7437
+51/94 [===============&gt;..............] - ETA: 11s - loss: 0.5171 - accuracy: 0.7422
+52/94 [===============&gt;..............] - ETA: 11s - loss: 0.5150 - accuracy: 0.7436
+53/94 [===============&gt;..............] - ETA: 11s - loss: 0.5149 - accuracy: 0.7429
+54/94 [================&gt;.............] - ETA: 11s - loss: 0.5142 - accuracy: 0.7427
+55/94 [================&gt;.............] - ETA: 10s - loss: 0.5121 - accuracy: 0.7443
+56/94 [================&gt;.............] - ETA: 10s - loss: 0.5124 - accuracy: 0.7422
+57/94 [=================&gt;............] - ETA: 10s - loss: 0.5115 - accuracy: 0.7427
+58/94 [=================&gt;............] - ETA: 10s - loss: 0.5103 - accuracy: 0.7432
+59/94 [=================&gt;............] - ETA: 9s - loss: 0.5089 - accuracy: 0.7440 
+60/94 [==================&gt;...........] - ETA: 9s - loss: 0.5085 - accuracy: 0.7434
+61/94 [==================&gt;...........] - ETA: 9s - loss: 0.5076 - accuracy: 0.7439
+62/94 [==================&gt;...........] - ETA: 8s - loss: 0.5066 - accuracy: 0.7440
+63/94 [===================&gt;..........] - ETA: 8s - loss: 0.5067 - accuracy: 0.7421
+64/94 [===================&gt;..........] - ETA: 8s - loss: 0.5058 - accuracy: 0.7425
+65/94 [===================&gt;..........] - ETA: 8s - loss: 0.5044 - accuracy: 0.7436
+66/94 [====================&gt;.........] - ETA: 7s - loss: 0.5031 - accuracy: 0.7434
+67/94 [====================&gt;.........] - ETA: 7s - loss: 0.5012 - accuracy: 0.7447
+68/94 [====================&gt;.........] - ETA: 7s - loss: 0.5005 - accuracy: 0.7436
+69/94 [=====================&gt;........] - ETA: 7s - loss: 0.5011 - accuracy: 0.7412
+70/94 [=====================&gt;........] - ETA: 6s - loss: 0.4998 - accuracy: 0.7417
+71/94 [=====================&gt;........] - ETA: 6s - loss: 0.4972 - accuracy: 0.7435
+72/94 [=====================&gt;........] - ETA: 6s - loss: 0.4966 - accuracy: 0.7431
+73/94 [======================&gt;.......] - ETA: 5s - loss: 0.4949 - accuracy: 0.7443
+74/94 [======================&gt;.......] - ETA: 5s - loss: 0.4950 - accuracy: 0.7430
+75/94 [======================&gt;.......] - ETA: 5s - loss: 0.4929 - accuracy: 0.7444
+76/94 [=======================&gt;......] - ETA: 5s - loss: 0.4910 - accuracy: 0.7462
+77/94 [=======================&gt;......] - ETA: 4s - loss: 0.4900 - accuracy: 0.7465
+78/94 [=======================&gt;......] - ETA: 4s - loss: 0.4891 - accuracy: 0.7468
+79/94 [========================&gt;.....] - ETA: 4s - loss: 0.4888 - accuracy: 0.7458
+80/94 [========================&gt;.....] - ETA: 4s - loss: 0.4883 - accuracy: 0.7453
+81/94 [========================&gt;.....] - ETA: 3s - loss: 0.4880 - accuracy: 0.7454
+82/94 [=========================&gt;....] - ETA: 3s - loss: 0.4859 - accuracy: 0.7472
+83/94 [=========================&gt;....] - ETA: 3s - loss: 0.4845 - accuracy: 0.7482
+84/94 [=========================&gt;....] - ETA: 2s - loss: 0.4840 - accuracy: 0.7478
+85/94 [==========================&gt;...] - ETA: 2s - loss: 0.4835 - accuracy: 0.7473
+86/94 [==========================&gt;...] - ETA: 2s - loss: 0.4815 - accuracy: 0.7478
+87/94 [==========================&gt;...] - ETA: 2s - loss: 0.4813 - accuracy: 0.7476
+88/94 [===========================&gt;..] - ETA: 1s - loss: 0.4803 - accuracy: 0.7476
+89/94 [===========================&gt;..] - ETA: 1s - loss: 0.4788 - accuracy: 0.7488
+90/94 [===========================&gt;..] - ETA: 1s - loss: 0.4780 - accuracy: 0.7488
+91/94 [============================&gt;.] - ETA: 0s - loss: 0.4774 - accuracy: 0.7491
+92/94 [============================&gt;.] - ETA: 0s - loss: 0.4765 - accuracy: 0.7486
+93/94 [============================&gt;.] - ETA: 0s - loss: 0.4748 - accuracy: 0.7498
+94/94 [==============================] - ETA: 0s - loss: 0.4745 - accuracy: 0.7501
+94/94 [==============================] - 29s 308ms/step - loss: 0.4745 - accuracy: 0.7501 - val_loss: 0.3965 - val_accuracy: 0.7998
+Epoch 3/3
+
+ 1/94 [..............................] - ETA: 27s - loss: 0.3033 - accuracy: 0.8958
+ 2/94 [..............................] - ETA: 28s - loss: 0.3199 - accuracy: 0.8750
+ 3/94 [..............................] - ETA: 28s - loss: 0.3137 - accuracy: 0.8819
+ 4/94 [&gt;.............................] - ETA: 30s - loss: 0.3038 - accuracy: 0.8698
+ 5/94 [&gt;.............................] - ETA: 32s - loss: 0.3082 - accuracy: 0.8583
+ 6/94 [&gt;.............................] - ETA: 31s - loss: 0.3238 - accuracy: 0.8438
+ 7/94 [=&gt;............................] - ETA: 30s - loss: 0.3133 - accuracy: 0.8542
+ 8/94 [=&gt;............................] - ETA: 29s - loss: 0.3192 - accuracy: 0.8438
+ 9/94 [=&gt;............................] - ETA: 29s - loss: 0.3184 - accuracy: 0.8495
+10/94 [==&gt;...........................] - ETA: 30s - loss: 0.3140 - accuracy: 0.8542
+11/94 [==&gt;...........................] - ETA: 29s - loss: 0.3094 - accuracy: 0.8485
+12/94 [==&gt;...........................] - ETA: 29s - loss: 0.3068 - accuracy: 0.8490
+13/94 [===&gt;..........................] - ETA: 28s - loss: 0.3045 - accuracy: 0.8526
+14/94 [===&gt;..........................] - ETA: 28s - loss: 0.3027 - accuracy: 0.8542
+15/94 [===&gt;..........................] - ETA: 28s - loss: 0.2993 - accuracy: 0.8556
+16/94 [====&gt;.........................] - ETA: 27s - loss: 0.2950 - accuracy: 0.8607
+17/94 [====&gt;.........................] - ETA: 27s - loss: 0.2927 - accuracy: 0.8640
+18/94 [====&gt;.........................] - ETA: 27s - loss: 0.2916 - accuracy: 0.8657
+19/94 [=====&gt;........................] - ETA: 26s - loss: 0.2937 - accuracy: 0.8618
+20/94 [=====&gt;........................] - ETA: 26s - loss: 0.2921 - accuracy: 0.8635
+21/94 [=====&gt;........................] - ETA: 25s - loss: 0.2894 - accuracy: 0.8631
+22/94 [======&gt;.......................] - ETA: 25s - loss: 0.2855 - accuracy: 0.8655
+23/94 [======&gt;.......................] - ETA: 24s - loss: 0.2826 - accuracy: 0.8659
+24/94 [======&gt;.......................] - ETA: 24s - loss: 0.2806 - accuracy: 0.8672
+25/94 [======&gt;.......................] - ETA: 23s - loss: 0.2821 - accuracy: 0.8650
+26/94 [=======&gt;......................] - ETA: 23s - loss: 0.2804 - accuracy: 0.8646
+27/94 [=======&gt;......................] - ETA: 22s - loss: 0.2792 - accuracy: 0.8657
+28/94 [=======&gt;......................] - ETA: 22s - loss: 0.2804 - accuracy: 0.8631
+29/94 [========&gt;.....................] - ETA: 21s - loss: 0.2777 - accuracy: 0.8657
+30/94 [========&gt;.....................] - ETA: 21s - loss: 0.2797 - accuracy: 0.8632
+31/94 [========&gt;.....................] - ETA: 21s - loss: 0.2790 - accuracy: 0.8649
+32/94 [=========&gt;....................] - ETA: 20s - loss: 0.2754 - accuracy: 0.8672
+33/94 [=========&gt;....................] - ETA: 20s - loss: 0.2733 - accuracy: 0.8699
+34/94 [=========&gt;....................] - ETA: 19s - loss: 0.2713 - accuracy: 0.8713
+35/94 [==========&gt;...................] - ETA: 19s - loss: 0.2705 - accuracy: 0.8726
+36/94 [==========&gt;...................] - ETA: 19s - loss: 0.2685 - accuracy: 0.8738
+37/94 [==========&gt;...................] - ETA: 18s - loss: 0.2671 - accuracy: 0.8761
+38/94 [===========&gt;..................] - ETA: 18s - loss: 0.2663 - accuracy: 0.8750
+39/94 [===========&gt;..................] - ETA: 18s - loss: 0.2642 - accuracy: 0.8766
+40/94 [===========&gt;..................] - ETA: 17s - loss: 0.2629 - accuracy: 0.8781
+41/94 [============&gt;.................] - ETA: 17s - loss: 0.2622 - accuracy: 0.8775
+42/94 [============&gt;.................] - ETA: 17s - loss: 0.2600 - accuracy: 0.8800
+43/94 [============&gt;.................] - ETA: 16s - loss: 0.2621 - accuracy: 0.8789
+44/94 [=============&gt;................] - ETA: 16s - loss: 0.2628 - accuracy: 0.8788
+45/94 [=============&gt;................] - ETA: 16s - loss: 0.2613 - accuracy: 0.8796
+46/94 [=============&gt;................] - ETA: 15s - loss: 0.2600 - accuracy: 0.8786
+47/94 [==============&gt;...............] - ETA: 15s - loss: 0.2582 - accuracy: 0.8790
+48/94 [==============&gt;...............] - ETA: 15s - loss: 0.2571 - accuracy: 0.8793
+49/94 [==============&gt;...............] - ETA: 14s - loss: 0.2566 - accuracy: 0.8797
+50/94 [==============&gt;...............] - ETA: 14s - loss: 0.2568 - accuracy: 0.8788
+51/94 [===============&gt;..............] - ETA: 14s - loss: 0.2557 - accuracy: 0.8795
+52/94 [===============&gt;..............] - ETA: 13s - loss: 0.2562 - accuracy: 0.8786
+53/94 [===============&gt;..............] - ETA: 13s - loss: 0.2548 - accuracy: 0.8801
+54/94 [================&gt;.............] - ETA: 13s - loss: 0.2524 - accuracy: 0.8819
+55/94 [================&gt;.............] - ETA: 12s - loss: 0.2509 - accuracy: 0.8833
+56/94 [================&gt;.............] - ETA: 12s - loss: 0.2505 - accuracy: 0.8847
+57/94 [=================&gt;............] - ETA: 11s - loss: 0.2518 - accuracy: 0.8834
+58/94 [=================&gt;............] - ETA: 11s - loss: 0.2502 - accuracy: 0.8840
+59/94 [=================&gt;............] - ETA: 11s - loss: 0.2495 - accuracy: 0.8845
+60/94 [==================&gt;...........] - ETA: 10s - loss: 0.2482 - accuracy: 0.8851
+61/94 [==================&gt;...........] - ETA: 10s - loss: 0.2473 - accuracy: 0.8852
+62/94 [==================&gt;...........] - ETA: 10s - loss: 0.2463 - accuracy: 0.8861
+63/94 [===================&gt;..........] - ETA: 9s - loss: 0.2461 - accuracy: 0.8856 
+64/94 [===================&gt;..........] - ETA: 9s - loss: 0.2446 - accuracy: 0.8870
+65/94 [===================&gt;..........] - ETA: 9s - loss: 0.2431 - accuracy: 0.8878
+66/94 [====================&gt;.........] - ETA: 8s - loss: 0.2420 - accuracy: 0.8889
+67/94 [====================&gt;.........] - ETA: 8s - loss: 0.2420 - accuracy: 0.8887
+68/94 [====================&gt;.........] - ETA: 8s - loss: 0.2401 - accuracy: 0.8900
+69/94 [=====================&gt;........] - ETA: 7s - loss: 0.2406 - accuracy: 0.8895
+70/94 [=====================&gt;........] - ETA: 7s - loss: 0.2386 - accuracy: 0.8905
+71/94 [=====================&gt;........] - ETA: 7s - loss: 0.2376 - accuracy: 0.8911
+72/94 [=====================&gt;........] - ETA: 6s - loss: 0.2365 - accuracy: 0.8918
+73/94 [======================&gt;.......] - ETA: 6s - loss: 0.2360 - accuracy: 0.8918
+74/94 [======================&gt;.......] - ETA: 6s - loss: 0.2354 - accuracy: 0.8922
+75/94 [======================&gt;.......] - ETA: 6s - loss: 0.2341 - accuracy: 0.8928
+76/94 [=======================&gt;......] - ETA: 5s - loss: 0.2318 - accuracy: 0.8942
+77/94 [=======================&gt;......] - ETA: 5s - loss: 0.2297 - accuracy: 0.8956
+78/94 [=======================&gt;......] - ETA: 5s - loss: 0.2284 - accuracy: 0.8958
+79/94 [========================&gt;.....] - ETA: 4s - loss: 0.2277 - accuracy: 0.8961
+80/94 [========================&gt;.....] - ETA: 4s - loss: 0.2269 - accuracy: 0.8966
+81/94 [========================&gt;.....] - ETA: 4s - loss: 0.2265 - accuracy: 0.8963
+82/94 [=========================&gt;....] - ETA: 3s - loss: 0.2257 - accuracy: 0.8966
+83/94 [=========================&gt;....] - ETA: 3s - loss: 0.2259 - accuracy: 0.8966
+84/94 [=========================&gt;....] - ETA: 3s - loss: 0.2249 - accuracy: 0.8971
+85/94 [==========================&gt;...] - ETA: 2s - loss: 0.2235 - accuracy: 0.8978
+86/94 [==========================&gt;...] - ETA: 2s - loss: 0.2222 - accuracy: 0.8985
+87/94 [==========================&gt;...] - ETA: 2s - loss: 0.2208 - accuracy: 0.8994
+88/94 [===========================&gt;..] - ETA: 1s - loss: 0.2199 - accuracy: 0.9001
+89/94 [===========================&gt;..] - ETA: 1s - loss: 0.2198 - accuracy: 0.9000
+90/94 [===========================&gt;..] - ETA: 1s - loss: 0.2200 - accuracy: 0.9002
+91/94 [============================&gt;.] - ETA: 0s - loss: 0.2184 - accuracy: 0.9011
+92/94 [============================&gt;.] - ETA: 0s - loss: 0.2178 - accuracy: 0.9010
+93/94 [============================&gt;.] - ETA: 0s - loss: 0.2173 - accuracy: 0.9017
+94/94 [==============================] - ETA: 0s - loss: 0.2173 - accuracy: 0.9017
+94/94 [==============================] - 30s 318ms/step - loss: 0.2173 - accuracy: 0.9017 - val_loss: 0.3078 - val_accuracy: 0.8811
+&lt;keras.src.callbacks.History object at 0x0000024435E3FE10&gt;
+
+WARNING:tensorflow:From C:\Users\rapha\venv\Lib\site-packages\keras\src\utils\tf_utils.py:492: The name tf.ragged.RaggedTensorValue is deprecated. Please use tf.compat.v1.ragged.RaggedTensorValue instead.
+
+WARNING:tensorflow:From C:\Users\rapha\venv\Lib\site-packages\keras\src\utils\tf_utils.py:492: The name tf.ragged.RaggedTensorValue is deprecated. Please use tf.compat.v1.ragged.RaggedTensorValue instead.
+
+WARNING:tensorflow:From C:\Users\rapha\venv\Lib\site-packages\keras\src\engine\base_layer_utils.py:384: The name tf.executing_eagerly_outside_functions is deprecated. Please use tf.compat.v1.executing_eagerly_outside_functions instead.
+
+WARNING:tensorflow:From C:\Users\rapha\venv\Lib\site-packages\keras\src\engine\base_layer_utils.py:384: The name tf.executing_eagerly_outside_functions is deprecated. Please use tf.compat.v1.executing_eagerly_outside_functions instead.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>y_pred_probs <span class="op">=</span> model.predict(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ 1/35 [..............................] - ETA: 7s
+ 4/35 [==&gt;...........................] - ETA: 0s
+ 7/35 [=====&gt;........................] - ETA: 0s
+10/35 [=======&gt;......................] - ETA: 0s
+13/35 [==========&gt;...................] - ETA: 0s
+15/35 [===========&gt;..................] - ETA: 0s
+18/35 [==============&gt;...............] - ETA: 0s
+21/35 [=================&gt;............] - ETA: 0s
+24/35 [===================&gt;..........] - ETA: 0s
+27/35 [======================&gt;.......] - ETA: 0s
+30/35 [========================&gt;.....] - ETA: 0s
+33/35 [===========================&gt;..] - ETA: 0s
+35/35 [==============================] - 1s 21ms/step</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> (model.predict(X_test) <span class="op">&gt;</span> <span class="fl">0.5</span>).astype(<span class="st">"int32"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ 1/35 [..............................] - ETA: 2s
+ 4/35 [==&gt;...........................] - ETA: 0s
+ 7/35 [=====&gt;........................] - ETA: 0s
+11/35 [========&gt;.....................] - ETA: 0s
+14/35 [===========&gt;..................] - ETA: 0s
+17/35 [=============&gt;................] - ETA: 0s
+20/35 [================&gt;.............] - ETA: 0s
+23/35 [==================&gt;...........] - ETA: 0s
+26/35 [=====================&gt;........] - ETA: 0s
+28/35 [=======================&gt;......] - ETA: 0s
+32/35 [==========================&gt;...] - ETA: 0s
+35/35 [==============================] - ETA: 0s
+35/35 [==============================] - 1s 21ms/step</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Test Accuracy: </span><span class="sc">{</span>accuracy<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test Accuracy: 0.8811438784629133</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, roc_curve, auc</span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a>conf_matrix <span class="op">=</span> confusion_matrix(y_test, y_pred)</span>
+<span id="cb85-6"><a href="#cb85-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Confusion Matrix:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(conf_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[812  21]
+ [112 174]]</code></pre>
+</div>
+</div>
+<p>Das neuronale Netzwerk sagt das Train-Sample zwar perfekt vorher, hat jedoch vergleichsweise große Schwierigkeiten beim Test-Sample.</p>
+</section>
+<section id="fazit" class="level2">
+<h2 class="anchored" data-anchor-id="fazit">Fazit</h2>
+<p>Durch die explorative Datenanalyse war es möglich, einige relevante Charakteristika herauszuarbeiten, die Hate-Speech-Tweets klar von anderen Tweets abgrenzen. Hate Speech enthält nämlich einen großen Anteil an Beleidigungen und Schimpfwörtern sowie negativen Sentimenten. Diese Erkenntnisse waren für die Modellierung hilfreich, da es gelang, Features basierend auf der EDA zu generieren, die von hoher Relevanz für die Performance des Modells waren. Das Ziel der Modellierung war es, ein Modell zu trainieren, das Hate Speech in Tweets möglichst akkurat erkennt. Durch den kombinierten Ansatz aus Training und Deep Learning wurde dieses Ziel mit Erfolg erreicht, auch wenn die Deep Learning Modelle vergleichsweise schlecht abschnitten.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
